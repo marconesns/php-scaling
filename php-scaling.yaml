@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: php-scaling
+  name: php-scaling
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: php-scaling
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: php-scaling
+    spec:
+      containers:
+      - image: marconesns/php-scaling:v1.0
+        name: php-scaling
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 25m
+            memory: 25Mi
+status: {}
